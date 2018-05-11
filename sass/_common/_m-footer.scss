@@ -1,0 +1,19 @@
+.copyright {
+	font-size: 12px;
+	letter-spacing: 1px;
+	line-height: 2em;
+}
+
+@include respond(Desktops) {}
+
+@include respond(Desktops-Tablets) {}
+
+@include respond(HD) {}
+
+@include respond(Tablets) {}
+
+@include respond(Tablets-Mobiles) {}
+
+@include respond(Mobiles) {}
+
+@include respond(Iphone5) {}

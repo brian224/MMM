@@ -1,0 +1,215 @@
+﻿.flip-card {
+	position: relative;
+	font-size: 0;
+	line-height: 0;
+	white-space: nowrap;
+	perspective: 1000px;
+
+	.list {
+		margin: 0 4px 0 3px;
+		display: inline-block;
+		position: relative;
+
+		&:before, &:after {
+			content: '';
+			margin-top: -7px;
+			background: $color-black;
+			display: block;
+			width: 3px;
+			height: 14px;
+			position: absolute;
+			top: 50%;
+			z-index: 2;
+		}
+
+		&:before {
+			right: 100%;
+		}
+
+		&:after {
+			left: 100%;
+		}
+	}
+
+	.back {
+		width: 100%;
+		height: 100%;
+
+		.top, .bottom {
+			display: block;
+			width: 100%;
+			border: 1px solid #a6acad;
+			border-radius: 2px;
+			box-sizing: border-box;
+
+			&:before {
+				bottom: 0;
+			}
+		}
+
+		.top {
+			margin-bottom: 1px;
+			position: relative;
+		}
+	}
+
+	.flip-front, .flip-back {
+		display: block;
+		width: 100%;
+		position: absolute;
+		left: 0;
+		border: 1px solid #a6acad;
+		border-radius: 2px;
+		box-sizing: border-box;
+		backface-visibility: hidden;
+	}
+
+	.flip-front {
+		bottom: 0;
+		opacity: 0;
+		@include animation(flip-front 0.5s forwards linear);
+		@include transform(rotateX(180deg));
+		@include transform-origin(top, center);
+
+		&:before {
+			top: 0;
+		}
+	}
+
+	.flip-back {
+		top: 0;
+		@include animation(flip-back 0.5s forwards linear);
+		@include transform-origin(bottom, center);
+	}
+
+	.back .top, .flip-front {
+		&:before {
+			content: '';
+			display: block;
+			position: absolute;
+			left: 50%;
+		}
+	}
+
+	.flip-back {
+		width: 100%;
+	}
+}
+
+.btn-top {
+	background: rgba(#b1bfc4, 0.8);
+	display: block;
+	width: 44px;
+	height: 44px;
+	position: fixed;
+	bottom: 58px;
+	right: 0;
+	z-index: 1;
+	color: $color-white;
+	font-size: 12px;
+	letter-spacing: 1px;
+	@include transition(ease-in opacity 0.3s);
+
+	&:before {
+		content: '';
+		margin: 4px auto -2px auto;
+		display: block;
+		width: 12px;
+		height: 12px;
+		border-top: 2px solid $color-white;
+		border-right: 2px solid $color-white;
+		border-bottom: 2px solid transparent;
+		border-left: 2px solid transparent;
+		transform: rotate(-45deg);
+	}
+}
+
+@include keyframes(flip-front) {
+	0% {
+		opacity: 0;
+		@include transform(rotateX(180deg));
+	}
+
+	50% {
+		opacity: 0;
+	}
+
+	50.1% {
+		opacity: 1;
+	}
+
+	100% {
+		opacity: 1;
+		@include transform(rotateX(0deg));
+	}
+}
+
+@include keyframes(flip-back) {
+	0% {
+		opacity: 1;
+		@include transform(rotateX(0deg));
+	}
+
+	50% {
+		opacity: 1;
+	}
+
+	50.1% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 0;
+		@include transform(rotateX(-180deg));
+	}
+}
+
+@include respond(Desktops) {}
+
+@include respond(Desktops-Tablets) {
+	.flip-card {
+		.list {
+			width: 60px;
+			height: 89px;
+		}
+
+		.back .top, .back .bottom, .flip-front, .flip-back {
+			height: 44px;
+		}
+
+		.flip-front:before {
+			top: -4px;
+		}
+	}
+
+	.btn-top {
+		display: none;
+	}
+}
+
+@include respond(HD) {}
+
+@include respond(Tablets) {}
+
+@include respond(Tablets-Mobiles) {}
+
+@include respond(Mobiles) {
+	.flip-card {
+		.list {
+			width: 30px;
+			height: 45px;
+		}
+
+		.back .top, .back .bottom, .flip-front, .flip-back {
+			height: 22px;
+		}
+
+		.flip-front:before {
+			top: -2px;
+		}
+	}
+}
+
+@include respond(Iphone5) {}
+
+@include browsers('IE') {}

@@ -1,0 +1,157 @@
+.l-main .btn-link {
+	border-radius: 2px;
+	line-height: 1.5em;
+
+	.text {
+		position: relative;
+
+		&:before, &:after {
+			content: '';
+			background: $color-white;
+			display: block;
+			width: 0;
+			height: 1px;
+			position: absolute;
+			top: 50%;
+			@include transition(ease-in all 0.3s);
+		}
+
+		&:before {
+			margin-top: -2px;
+			left: 0;
+		}
+
+		&:after {
+			margin-top: 1px;
+			right: 0;
+		}
+	}
+}
+
+.btn-circle {
+	position: relative;
+	border-radius: 50%;
+
+	&:before, &:after {
+		content: '';
+		background: image-url('result/result.png') no-repeat;
+		display: block;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+	}
+}
+
+@include respond(Desktops) {
+	.l-main .btn-link {
+		padding: 0 15px;
+		height: 50px;
+		font-size: 18px;
+
+		.text {
+			padding: 0 5px;
+		}
+
+		&:hover .text {
+			&:before, &:after {
+				width: 100%;
+			}
+		}
+	}
+
+	.btn-circle {
+		width: 80px;
+		height: 80px;
+		@include transition(ease-in all 0.3s);
+
+		&:hover {
+			background: #b1bfc4 !important;
+
+			&:before {
+				opacity: 0;
+			}
+
+			&:after {
+				opacity: 1;
+			}
+		}
+
+		&:before, &:after {
+			@include transition(ease-in all 0.3s);
+		}
+
+		&:after {
+			opacity: 0;
+		}
+
+		&.icon-save {
+			cursor: pointer;
+
+			&:before, &:after {
+				margin: -26px 0 0 -20px;
+				width: 40px;
+				height: 44px;
+			}
+
+			&:after {
+				background-position: 0 -44px;
+			}
+		}
+
+		&.icon-fb {
+			&:before, &:after {
+				margin: -18px 0 0 -10px;
+				width: 20px;
+				height: 36px;
+			}
+
+			&:before {
+				background-position: -40px 0;
+			}
+
+			&:after {
+				background-position: -40px -36px;
+			}
+		}
+	}
+}
+
+@include respond(Desktops-Tablets) {}
+
+@include respond(HD) {}
+
+@include respond(Tablets) {}
+
+@include respond(Tablets-Mobiles) {
+	.l-main .btn-link {
+		padding: 0 10px;
+		height: 40px;
+		font-size: 16px;
+	}
+
+	.btn-circle {
+		width: 40px;
+		height: 40px;
+
+		&:before {
+			background-size: 30px auto;
+		}
+
+		&.icon-save:before {
+			margin: -13px 0 0 -10px;
+			width: 20px;
+			height: 22px;
+		}
+
+		&.icon-fb:before {
+			margin: -9px 0 0 -5px;
+			background-position: -20px 0;
+			width: 10px;
+			height: 18px;
+		}
+	}
+}
+
+@include respond(Mobiles) {}
+
+@include respond(Iphone5) {}

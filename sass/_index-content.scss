@@ -1,0 +1,1257 @@
+.l-content {
+	@include display-flex;
+	@include align-items(center);
+	@include flex-direction(row-reverse);
+	overflow: hidden;
+
+	&:after {
+		content: '';
+		display: block;
+		position: absolute;
+		border-top: solid $color-major;
+		border-right: solid $color-white;
+		border-bottom: solid $color-white;
+		border-left: solid $color-major;
+	}
+}
+
+.main-content {
+	@include display-flex;
+	@include flex-direction(column);
+	box-sizing: border-box;
+	opacity: 0;
+	@include animation(fade-in 1.2s 1.5s forwards linear);
+}
+
+.flip-card {
+	.list {
+		&:nth-child(1) {
+			.flip-front, .flip-back {
+				@include animation-delay(3.1s);
+			}
+		}
+
+		&:nth-child(2) {
+			.flip-front, .flip-back {
+				@include animation-delay(3.2s);
+			}
+		}
+
+		&:nth-child(3) {
+			.flip-front, .flip-back {
+				@include animation-delay(3.3s);
+			}
+		}
+
+		&:nth-child(4) {
+			.flip-front, .flip-back {
+				@include animation-delay(3.4s);
+			}
+		}
+
+		&:nth-child(5) {
+			.flip-front, .flip-back {
+				@include animation-delay(3.5s);
+			}
+		}
+
+		&:nth-child(6) {
+			.flip-front, .flip-back {
+				@include animation-delay(3.6s);
+			}
+		}
+
+		&:nth-child(7) {
+			.flip-front, .flip-back {
+				@include animation-delay(3.7s);
+			}
+		}
+
+		&:nth-child(8) {
+			.flip-front, .flip-back {
+				@include animation-delay(3.8s);
+			}
+		}
+	}
+
+	.back {
+		.top, .bottom {
+			background: $color-major;
+		}
+	}
+
+	.flip-front, .flip-back {
+		background: $color-major;
+	}
+
+	.back .top, .flip-front {
+		&:before {
+			background: image-url('index/index.png') no-repeat;
+		}
+	}
+}
+
+.main-visual {
+	position: relative;
+	opacity: 0;
+	pointer-events: none;
+	@include animation(fade-in 1.2s 1.5s forwards linear);
+
+	.signature {
+		background: image-url('index/index.png') no-repeat;
+		position: absolute;
+
+		.wording {
+			position: absolute;
+			white-space: nowrap;
+		}
+	}
+
+	.site-slogan {
+		background: image-url('index/index.png') no-repeat;
+		position: absolute;
+		z-index: 1;
+	}
+
+	.bed-wrap {
+		&:before {
+			content: '';
+			background: rgba(#cedee1, 0.7);
+			display: block;
+			width: 200%;
+			position: absolute;
+			right: 100%;
+			opacity: 0;
+			z-index: 0;
+			@include transform(rotate(-34deg) scale(1, 0.9));
+			@include transform-origin(top, right);
+			@include animation(fade-in 0.5s 2s forwards linear);
+		}
+
+		.bed {
+			background: image-url('index/index.png') 0 0 no-repeat;
+			display: block;
+			width: 100%;
+			height: 100%;
+			position: relative;
+			z-index: 1;
+		}
+
+		.pattern .list {
+			display: block;
+			position: absolute;
+			z-index: 1;
+
+			i {
+				background: image-url('index/index.png') no-repeat;
+				display: block;
+				position: absolute;
+				backface-visibility: hidden;
+			}
+		}
+	}
+}
+
+.approach-ani {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	overflow: hidden;
+	z-index: 1;
+	pointer-events: none;
+	font-size: 0;
+	line-height: 0;
+}
+
+.flip-cub {
+	position: absolute;
+	top: 0;
+	left: 0;
+	perspective: 4000px;
+
+	li {
+		background: $color-white;
+		display: inline-block;
+		backface-visibility: hidden;
+	}
+}
+
+.sub-title {
+	line-height: 1.5em;
+}
+
+@include keyframes(fly-pattern1-dt) {
+	0% {
+		@include transform(translate(800px, -800px));
+	}
+
+	8% {
+		@include transform(translate(0));
+	}
+
+	42% {
+		@include transform(translate(0));
+	}
+
+	50% {
+		@include transform(translate(800px, -800px));
+	}
+}
+
+@include keyframes(fly-pattern2-dt) {
+	0% {
+		@include transform(translate(-800px, -800px));
+	}
+
+	8% {
+		@include transform(translate(0));
+	}
+
+	42% {
+		@include transform(translate(0));
+	}
+
+	50% {
+		@include transform(translate(-800px, -800px));
+	}
+}
+
+@include keyframes(fly-pattern3-dt) {
+	0% {
+		@include transform(translate(800px, 800px));
+	}
+
+	8% {
+		@include transform(translate(0));
+	}
+
+	42% {
+		@include transform(translate(0));
+	}
+
+	50% {
+		@include transform(translate(800px, 800px));
+	}
+}
+
+@include keyframes(fly-pattern4-dt) {
+	0% {
+		@include transform(translate(-800px, 800px));
+	}
+
+	8% {
+		@include transform(translate(0));
+	}
+
+	42% {
+		@include transform(translate(0));
+	}
+
+	50% {
+		@include transform(translate(-800px, 800px));
+	}
+}
+
+@include keyframes(fly-pattern11-xs) {
+	0%, 50% {
+		top: 400px;
+		left: -400px;
+	}
+
+	8%, 42% {
+		top: 0;
+		left: 0;
+	}
+}
+
+@include keyframes(fly-pattern12-xs) {
+	0%, 50% {
+		top: 400px;
+		left: -336px;
+	}
+
+	8%, 42% {
+		top: 0;
+		left: 64px;
+	}
+}
+
+@include keyframes(fly-pattern13-xs) {
+	0%, 50% {
+		top: -400px;
+		left: -332px;
+	}
+
+	8%, 42% {
+		top: 0;
+		left: 68px;
+	}
+}
+
+@include keyframes(fly-pattern14-xs) {
+	0%, 50% {
+		top: -370px;
+		left: -400px;
+	}
+
+	8%, 42% {
+		top: 30px;
+		left: 0;
+	}
+}
+
+@include keyframes(fly-pattern15-xs) {
+	0%, 50% {
+		top: 455px;
+		left: 414px;
+	}
+
+	8%, 42% {
+		top: 55px;
+		left: 14px;
+	}
+}
+
+@include keyframes(fly-pattern16-xs) {
+	0%, 50% {
+		top: 488px;
+		left: 464px;
+	}
+
+	8%, 42% {
+		top: 88px;
+		left: 64px;
+	}
+}
+
+@include keyframes(fly-pattern17-xs) {
+	0%, 50% {
+		top: -322px;
+		left: 514px;
+	}
+
+	8%, 42% {
+		top: 78px;
+		left: 114px;
+	}
+}
+
+@include keyframes(fly-pattern18-xs) {
+	0%, 50% {
+		top: -226px;
+		left: 502px;
+	}
+
+	8%, 42% {
+		top: 102px;
+		left: 174px;
+	}
+}
+
+@include keyframes(fly-pattern21-xs) {
+	0%, 50% {
+		top: 400px;
+		left: -400px;
+	}
+
+	8%, 42% {
+		top: 0;
+		left: 0;
+	}
+}
+
+@include keyframes(fly-pattern22-xs) {
+	0%, 50% {
+		top: 400px;
+		left: -348px;
+	}
+
+	8%, 42% {
+		top: 0;
+		left: 52px;
+	}
+}
+
+@include keyframes(fly-pattern23-xs) {
+	0%, 50% {
+		top: 400px;
+		left: 501px;
+	}
+
+	8%, 42% {
+		top: 0;
+		left: 101px;
+	}
+}
+
+@include keyframes(fly-pattern24-xs) {
+	0%, 50% {
+		top: 400px;
+		left: 552px;
+	}
+
+	8%, 42% {
+		top: 0;
+		left: 152px;
+	}
+}
+
+@include keyframes(fly-pattern25-xs) {
+	0%, 50% {
+		top: -388px;
+		left: -375px;
+	}
+
+	8%, 42% {
+		top: 12px;
+		left: 25px;
+	}
+}
+
+@include keyframes(fly-pattern26-xs) {
+	0%, 50% {
+		top: -388px;
+		left: -325px;
+	}
+
+	8%, 42% {
+		top: 12px;
+		left: 75px;
+	}
+}
+
+@include keyframes(fly-pattern27-xs) {
+	0%, 50% {
+		top: -388px;
+		left: 526px;
+	}
+
+	8%, 42% {
+		top: 12px;
+		left: 126px;
+	}
+}
+
+@include keyframes(fly-pattern28-xs) {
+	0%, 50% {
+		top: -326px;
+		left: 552px;
+	}
+
+	8%, 42% {
+		top: 74px;
+		left: 152px;
+	}
+}
+
+@include keyframes(flip-cub-md) {
+	0% {
+		@include transform(rotateY(0deg) scale(1));
+	}
+
+	1% {
+		@include transform(rotateY(1.8deg) scale(0.9));
+	}
+
+	50% {
+		opacity: 1;
+	}
+
+	100% {
+		opacity: 0;
+		@include transform(rotateY(180deg) scale(0.75));
+	}
+}
+
+@include keyframes(flip-cub-tm) {
+	0% {
+		@include transform(rotateX(0deg) scale(1));
+	}
+
+	1% {
+		@include transform(rotateX(1.8deg) scale(0.9));
+	}
+
+	50% {
+		opacity: 1;
+	}
+
+	100% {
+		opacity: 0;
+		@include transform(rotateX(180deg) scale(0.75));
+	}
+}
+
+@include keyframes(fade-in) {
+	0% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
+
+@include respond(Desktops) {
+	.l-body.is-full .l-main {
+		@include align-items(center);
+		@include justify-content(center);
+		min-height: 640px;
+	}
+
+	.l-content {
+		width: 100%;
+		height: 100%;
+	}
+
+	.main-content {
+		padding-left: 30px;
+		width: 47vw;
+	}
+
+	.flip-card {
+		@include transform(scale(0.75));
+		@include transform-origin(left, center);
+	}
+
+	.main-visual {
+		width: 53vw;
+		height: 100%;
+
+		.bed-wrap {
+			margin-bottom: -270px;
+			position: absolute;
+			bottom: 50%;
+			right: 2vw;
+		}
+
+		.signature {
+			bottom: 78px;
+			right: -67px;
+		}
+	}
+
+	.flip-cub {
+		width: 2000px;
+		height: 1000px;
+
+		li {
+			width: 50px;
+			height: 50px;
+			@include animation(flip-cub-md 0.5s forwards linear);
+
+			@for $i from 2 through 39 {
+				&:nth-child(39n + #{$i}) {
+					@include animation-delay(0.05s * ($i - 1));
+				}
+			}
+
+			@for $j from 1 through 20 {
+				&:nth-child(39n + #{$j * 40}) {
+					@include animation-delay(1.8s + ($j * 0.05s));
+				}
+			}
+		}
+	}
+}
+
+@include respond(Desktops-Tablets) {
+	.l-content:after {
+		bottom: 70px;
+		right: 20px;
+		border-width: 64px;
+		box-shadow: -2px -2px 0 $color-white, 0 -2px 0 $color-white, -2px 0 0 $color-white;
+	}
+
+	.flip-card .list {
+		@for $i from 1 through 8 {
+			&:nth-child(#{$i}) {
+				.back .top:before {
+					background-position: -604px calc(-52px * (#{$i} - 1));
+				}
+
+				.flip-front:before {
+					background-position: -604px calc(-24px + (-52px * (#{$i} - 1)));
+				}
+			}
+		}
+
+		.back .top:before, .flip-front:before {
+			margin-left: -22px;
+			width: 44px;
+			height: 25px;
+		}
+
+		.flip-front:before {
+			height: 28px;
+		}
+	}
+
+	.main-visual {
+		.bed-wrap {
+			width: 460px;
+			height: 540px;
+
+			&:before {
+				margin-right: -62px;
+				height: 700px;
+				top: 10px;
+			}
+
+			.pattern .list {
+				&:nth-child(1) {
+					width: 376px;
+					height: 232px;
+					top: 154px;
+					left: 38px;
+
+					i {
+						&:nth-child(1) {
+							background-position: -372px -540px;
+							width: 128px;
+							height: 60px;
+							top: 0;
+							left: 0;
+							@include transform(translate(800px, -800px));
+							@include animation(fly-pattern1-dt 12s 1.5s infinite linear);
+						}
+
+						&:nth-child(2) {
+							background-position: -500px -540px;
+							width: 8px;
+							height: 60px;
+							top: 0;
+							left: 128px;
+							@include transform(translate(800px, -800px));
+							@include animation(fly-pattern1-dt 12s 1.7s infinite linear);
+						}
+
+						&:nth-child(3) {
+							background-position: -508px -540px;
+							width: 240px;
+							height: 96px;
+							top: 0;
+							left: 136px;
+							@include transform(translate(-800px, -800px));
+							@include animation(fly-pattern2-dt 12s 1.5s infinite linear);
+						}
+
+						&:nth-child(4) {
+							background-position: -372px -600px;
+							width: 136px;
+							height: 28px;
+							top: 60px;
+							left: 0;
+							@include transform(translate(-800px, -800px));
+							@include animation(fly-pattern2-dt 12s 1.7s infinite linear);
+						}
+
+						&:nth-child(5) {
+							background-position: -400px -650px;
+							width: 196px;
+							height: 28px;
+							top: 110px;
+							left: 28px;
+							@include transform(translate(800px, 800px));
+							@include animation(fly-pattern3-dt 12s 1.5s infinite linear);
+						}
+
+						&:nth-child(6) {
+							background-position: -500px -716px;
+							width: 20px;
+							height: 12px;
+							top: 176px;
+							left: 128px;
+							@include transform(translate(800px, 800px));
+							@include animation(fly-pattern3-dt 12s 1.3s infinite linear);
+						}
+
+						&:nth-child(7) {
+							background-position: -600px -696px;
+							width: 148px;
+							height: 48px;
+							top: 156px;
+							left: 228px;
+							@include transform(translate(-800px, 800px));
+							@include animation(fly-pattern4-dt 12s 1.5s infinite linear);
+						}
+
+						&:nth-child(8) {
+							background-position: -720px -744px;
+							width: 28px;
+							height: 28px;
+							top: 204px;
+							left: 348px;
+							@include transform(translate(-800px, 800px));
+							@include animation(fly-pattern4-dt 12s 1.3s infinite linear);
+						}
+					}
+				}
+
+				&:nth-child(2) {
+					width: 372px;
+					height: 192px;
+					top: 188px;
+					left: 42px;
+
+					i {
+						&:nth-child(1) {
+							background-position: 0 -540px;
+							width: 72px;
+							height: 108px;
+							top: 0;
+							left: 0;
+							@include transform(translate(800px, -800px));
+							@include animation(fly-pattern1-dt 12s 7.5s infinite linear);
+						}
+
+						&:nth-child(2) {
+							background-position: -104px -540px;
+							width: 80px;
+							height: 108px;
+							top: 0;
+							left: 104px;
+							@include transform(translate(800px, -800px));
+							@include animation(fly-pattern1-dt 12s 7.7s infinite linear);
+						}
+
+						&:nth-child(3) {
+							background-position: -202px -540px;
+							width: 72px;
+							height: 108px;
+							top: 0;
+							left: 202px;
+							@include transform(translate(-800px, -800px));
+							@include animation(fly-pattern2-dt 12s 7.5s infinite linear);
+						}
+
+						&:nth-child(4) {
+							background-position: -304px -540px;
+							width: 68px;
+							height: 108px;
+							top: 0;
+							left: 304px;
+							@include transform(translate(-800px, -800px));
+							@include animation(fly-pattern2-dt 12s 7.7s infinite linear);
+						}
+
+						&:nth-child(5) {
+							background-position: -50px -672px;
+							width: 76px;
+							height: 60px;
+							top: 24px;
+							left: 50px;
+							@include transform(translate(800px, 800px));
+							@include animation(fly-pattern3-dt 12s 7.5s infinite linear);
+						}
+
+						&:nth-child(6) {
+							background-position: -150px -672px;
+							width: 68px;
+							height: 60px;
+							top: 24px;
+							left: 150px;
+							@include transform(translate(800px, 800px));
+							@include animation(fly-pattern3-dt 12s 7.3s infinite linear);
+						}
+
+						&:nth-child(7) {
+							background-position: -252px -672px;
+							width: 72px;
+							height: 60px;
+							top: 24px;
+							left: 252px;
+							@include transform(translate(-800px, 800px));
+							@include animation(fly-pattern4-dt 12s 7.5s infinite linear);
+						}
+
+						&:nth-child(8) {
+							background-position: -460px -448px;
+							width: 68px;
+							height: 44px;
+							top: 148px;
+							left: 304px;
+							@include transform(translate(-800px, 800px));
+							@include animation(fly-pattern4-dt 12s 7.3s infinite linear);
+						}
+					}
+				}
+			}
+		}
+
+		.signature {
+			background-size: 561px auto;
+			background-position: -345px 0;
+			width: 99px;
+			height: 60px;
+
+			.wording {
+				top: 45px;
+				left: 42px;
+			}
+		}
+
+		.site-slogan {
+			margin-top: -84px;
+			background-position: -230px -40px;
+			background-size: 374px auto;
+			width: 72px;
+			height: 184px;
+			top: 50%;
+			left: 50px;
+			@include transform(scale(0.75));
+			@include transform-origin(left, center);
+		}
+	}
+
+	.sub-title {
+		padding: 15px 0 20px 0;
+		font-size: 20px;
+
+		.highlight {
+			font-size: 30px;
+		}
+	}
+}
+
+@include respond(HD) {
+	.flip-card {
+		@include transform(none);
+	}
+
+	.main-visual {
+		.site-slogan {
+			left: 92px;
+			@include transform(none);
+		}
+	}
+
+	.sub-title {
+		font-size: 24px;
+
+		.highlight {
+			font-size: 36px;
+		}
+	}
+}
+
+@include respond(Tablets-Mobiles) {
+	.l-content {
+		@include flex-direction(column-reverse);
+		width: 100vw;
+		box-sizing: border-box;
+	}
+
+	.main-content {
+		position: relative;
+		z-index: 1;
+	}
+
+	.main-visual {
+		width: 100vw;
+
+		.bed-wrap {
+			position: relative;
+		}
+
+		.signature {
+			z-index: 1;
+		}
+	}
+
+	.approach-ani {
+		z-index: 3;
+	}
+}
+
+@include respond(Tablets) {
+	.l-content {
+		padding-top: 90px;
+		@include justify-content(flex-end);
+		height: 100%;
+	}
+
+	.main-visual {
+		padding: 25px 0 50px 0;
+
+		.bed-wrap {
+			margin: 0 auto;
+		}
+
+		.signature {
+			bottom: 50px;
+			right: 100px;
+		}
+	}
+
+	.flip-cub {
+		width: 100vw;
+		height: 100vh;
+
+		li {
+			width: 5vw;
+			height: 5vw;
+			@include animation(flip-cub-tm 0.5s forwards linear);
+
+			@for $i from 2 through 19 {
+				&:nth-child(19n + #{$i}) {
+					@include animation-delay(0.05s * ($i - 1));
+				}
+			}
+
+			@for $j from 1 through 40 {
+				&:nth-child(19n + #{$j * 20}) {
+					@include animation-delay(0.9s + ($j * 0.05s));
+				}
+			}
+		}
+	}
+}
+
+@include respond(Mobiles) {
+	.l-content {
+		padding-top: 74px;
+		@include justify-content(flex-start);
+
+		&:after {
+			bottom: 10px;
+			right: 10px;
+			border-width: 32px;
+			box-shadow: -1px -1px 0 $color-white, 0 -1px 0 $color-white, -1px 0 0 $color-white;
+		}
+	}
+
+	.flip-card .list {
+		@for $i from 1 through 8 {
+			&:nth-child(#{$i}) {
+				.back .top:before {
+					background-position: -302px calc(-26px * (#{$i} - 1));
+				}
+
+				.flip-front:before {
+					background-position: -302px calc(-12px + (-26px * (#{$i} - 1)));
+				}
+			}
+		}
+
+		.back .top:before, .flip-front:before {
+			margin-left: -11px;
+			background-size: 374px auto;
+			width: 22px;
+			height: 13px;
+		}
+
+		.flip-front:before {
+			height: 14px;
+		}
+	}
+
+	.main-content {
+		padding: 15px 0 40px 0;
+		@include animation-delay(0.5s);
+	}
+
+	.main-visual {
+		margin-bottom: 110px;
+		@include display-flex;
+		@include justify-content(flex-end);
+		@include flex-grow(1);
+		max-width: 414px;
+		position: relative;
+		@include animation-delay(0.5s);
+
+		.bed-wrap {
+			margin-right: 30px;
+			width: 230px;
+			height: 270px;
+
+			&:before {
+				margin-right: -31px;
+				width: 300%;
+				height: 350px;
+				top: 5px;
+			}
+
+			.bed {
+				background-size: 374px auto;
+			}
+
+			.pattern .list {
+				i {
+					background-size: 374px auto;
+				}
+
+				&:nth-child(1) {
+					width: 188px;
+					height: 116px;
+					top: 77px;
+					left: 19px;
+
+					i {
+						&:nth-child(1) {
+							background-position: -186px -270px;
+							width: 64px;
+							height: 30px;
+							top: 400px;
+							left: -400px;
+							@include animation(fly-pattern11-xs 12s 1.5s infinite linear);
+						}
+
+						&:nth-child(2) {
+							background-position: -250px -270px;
+							width: 4px;
+							height: 30px;
+							top: 400px;
+							left: -336px;
+							@include animation(fly-pattern12-xs 12s 1.7s infinite linear);
+						}
+
+						&:nth-child(3) {
+							background-position: -254px -270px;
+							width: 120px;
+							height: 48px;
+							top: -400px;
+							left: -352px;
+							@include animation(fly-pattern13-xs 12s 1.5s infinite linear);
+						}
+
+						&:nth-child(4) {
+							background-position: -186px -300px;
+							width: 68px;
+							height: 14px;
+							top: -370px;
+							left: -400px;
+							@include animation(fly-pattern14-xs 12s 1.7s infinite linear);
+						}
+
+						&:nth-child(5) {
+							background-position: -200px -325px;
+							width: 98px;
+							height: 14px;
+							top: 455px;
+							left: 414px;
+							@include animation(fly-pattern15-xs 12s 1.5s infinite linear);
+						}
+
+						&:nth-child(6) {
+							background-position: -250px -358px;
+							width: 10px;
+							height: 6px;
+							top: 488px;
+							left: 464px;
+							@include animation(fly-pattern16-xs 12s 1.3s infinite linear);
+						}
+
+						&:nth-child(7) {
+							background-position: -300px -348px;
+							width: 74px;
+							height: 24px;
+							top: -322px;
+							left: 514px;
+							@include animation(fly-pattern17-xs 12s 1.5s infinite linear);
+						}
+
+						&:nth-child(8) {
+							background-position: -360px -372px;
+							width: 14px;
+							height: 14px;
+							top: -226px;
+							left: 502px;
+							@include animation(fly-pattern18-xs 12s 1.3s infinite linear);
+						}
+					}
+				}
+
+				&:nth-child(2) {
+					width: 186px;
+					height: 96px;
+					top: 94px;
+					left: 21px;
+
+					i {
+						&:nth-child(1) {
+							background-position: 0 -270px;
+							width: 36px;
+							height: 54px;
+							top: 400px;
+							left: -400px;
+							@include animation(fly-pattern21-xs 12s 7.5s infinite linear);
+						}
+
+						&:nth-child(2) {
+							background-position: -52px -270px;
+							width: 40px;
+							height: 54px;
+							top: 400px;
+							left: -348px;
+							@include animation(fly-pattern22-xs 12s 7.7s infinite linear);
+						}
+
+						&:nth-child(3) {
+							background-position: -101px -270px;
+							width: 36px;
+							height: 54px;
+							top: 400px;
+							left: 501px;
+							@include animation(fly-pattern23-xs 12s 7.5s infinite linear);
+						}
+
+						&:nth-child(4) {
+							background-position: -152px -270px;
+							width: 34px;
+							height: 54px;
+							top: 400px;
+							left: 552px;
+							@include animation(fly-pattern24-xs 12s 7.3s infinite linear);
+						}
+
+						&:nth-child(5) {
+							background-position: -25px -336px;
+							width: 38px;
+							height: 30px;
+							top: -388px;
+							left: -375px;
+							@include animation(fly-pattern25-xs 12s 7.5s infinite linear);
+						}
+
+						&:nth-child(6) {
+							background-position: -75px -336px;
+							width: 34px;
+							height: 30px;
+							top: -388px;
+							left: -325px;
+							@include animation(fly-pattern26-xs 12s 7.3s infinite linear);
+						}
+
+						&:nth-child(7) {
+							background-position: -126px -336px;
+							width: 36px;
+							height: 30px;
+							top: -388px;
+							left: 526px;
+							@include animation(fly-pattern27-xs 12s 7.5s infinite linear);
+						}
+
+						&:nth-child(8) {
+							background-position: -230px -224px;
+							width: 34px;
+							height: 22px;
+							top: -326px;
+							left: 552px;
+							@include animation(fly-pattern28-xs 12s 7.7s infinite linear);
+						}
+					}
+				}
+			}
+		}
+
+		.site-slogan {
+			margin-top: -69px;
+			background-position: -172px -30px;
+			background-size: 281px auto;
+			width: 54px;
+			height: 138px;
+			top: 50%;
+			left: 30px;
+		}
+
+		.signature {
+			margin-top: 10px;
+			background-size: 374px auto;
+			background-position: -230px 0;
+			width: 66px;
+			height: 40px;
+			position: absolute;
+			top: 100%;
+			right: 96px;
+
+			.wording {
+				top: 30px;
+				left: 28px;
+				font-size: 12px;
+			}
+		}
+	}
+
+	.sub-title {
+		padding: 10px 0 15px 0;
+		font-size: 12px;
+
+		.highlight {
+			font-size: 18px;
+		}
+	}
+
+	.flip-cub {
+		display: none;
+	}
+
+	@media screen and (min-width: 414px) {
+		.flip-card {
+			.list {
+				width: 37px;
+				height: 55px;
+			}
+
+			.back .top, .back .bottom, .flip-front, .flip-back {
+				height: 27px;
+			}
+
+			.flip-front:before {
+				top: -2px;
+			}
+		}
+
+		.sub-title {
+			font-size: 16px;
+
+			.highlight {
+				font-size: 24px;
+			}
+		}
+
+		.l-main .btn-link {
+			height: 50px;
+			font-size: 18px;
+		}
+	}
+}
+
+@include respond(Iphone5) {
+	.l-content {
+		@include justify-content(flex-end);
+	}
+
+	.main-content {
+		padding-right: 20px;
+		padding-left: 20px;
+	}
+
+	.flip-card .list {
+		margin: 0 3px 0 2px;
+
+		&:before, &:after {
+			width: 2px;
+		}
+	}
+
+	.sub-title {
+		font-size: 15px;
+
+		.highlight {
+			font-size: 22px;
+		}
+	}
+}
+
+@include browsers('MicroSoft') {
+	.flip-card .flip-front, .flip-card .flip-back, .main-visual .bed-wrap .pattern .list i, .flip-cub li {
+		backface-visibility: visible;
+	}
+
+	.flip-card .list {
+		perspective: 250px;
+	}
+}

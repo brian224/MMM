@@ -1,0 +1,174 @@
+.l-body {
+	text-size-adjust: none;
+
+	&.show-lightbox .l-lightbox {
+		opacity: 1;
+		z-index: 3;
+	}
+	
+	&.fade-out .l-lightbox {
+		@include animation(fade-out 0.3s forwards);
+	}
+}
+
+.l-header {
+	position: absolute;
+	left: 0;
+	right: 0;
+	box-sizing: border-box;
+	z-index: 2;
+	@include transition(ease-in all 0.3s);
+}
+
+.l-main {
+	background: $color-major;
+	position: relative;
+}
+
+.l-lightbox {
+	@include display-flex;
+	@include align-items(center);
+	@include justify-content(center);
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	opacity: 0;
+	z-index: -1;
+	@include transition(ease-in opacity 0.3s);
+}
+
+.l-footer {
+	background: $color-black;
+	box-sizing: border-box;
+}
+
+@include keyframes(fade-out) {
+	0% {
+		opacity: 1;
+	}
+
+	100% {
+		opacity: 0;
+	}
+}
+
+@include respond(Desktops) {}
+
+@include respond(Desktops-Tablets) {
+	.l-body {
+		&.is-full {
+			@include display-flex;
+			@include align-items(stretch);
+			@include justify-content(stretch);
+			@include flex-wrap(wrap);
+			height: 100vh;
+			position: relative;
+			overflow-x: hidden;
+	
+			.l-main {
+				padding-bottom: 50px;
+				@include display-flex;
+				@include align-items(stretch);
+				@include justify-content(center);
+				@include flex-grow(1);
+				min-height: 750px;
+				box-sizing: border-box;
+			}
+	
+			.l-footer {
+				position: fixed;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				z-index: 2;
+			}
+		}
+	}
+
+	.l-header {
+		padding: 0 50px;
+		@include display-flex;
+		@include justify-content(space-between);
+		top: 50px;
+	}
+
+	.l-content {
+		box-shadow: inset 20px 20px 0 $color-white, inset -20px -20px 0 $color-white;
+	}
+
+	.l-footer {
+		padding: 13px 50px;
+		min-height: 50px;
+	}
+}
+
+@include respond(Tablets-Mobiles) {}
+
+@include respond(Tablets) {}
+
+@include respond(Mobiles) {
+	body[data-scroll="header"] .btn-top {
+		opacity: 0;
+		pointer-events: none;
+	}
+
+	.l-body {
+		/*min-height: 100vh;*/
+		-webkit-text-size-adjust: none;
+
+		&.ios-chrome .l-main {
+			min-height: calc(100vh - 58px);
+		}
+	}
+
+	.l-header {
+		background: rgba($color-major, 0.9);
+		margin-left: env(safe-area-inset-left);
+		margin-right: env(safe-area-inset-right);
+		height: 64px;
+		position: fixed;
+		top: 10px;
+		left: 10px;
+		right: 10px;
+		z-index: 3;
+
+		&:after {
+			content: '';
+			background: $color-white;
+			height: 10px;
+			position: absolute;
+			top: -10px;
+			left: -10px;
+			right: -10px;
+		}
+	}
+
+	.l-main {
+		margin-left: env(safe-area-inset-left);
+		margin-right: env(safe-area-inset-right);
+		@include display-flex;
+		@include flex-direction(column);
+		min-height: calc(100vh - 170px);
+		overflow: hidden;
+		box-shadow: inset 10px 10px 0 $color-white, inset -10px -10px 0 $color-white;
+	}
+
+	.l-content {
+		@include flex-grow(1);
+	}
+
+	.l-footer {
+		padding: 5px 40px;
+		position: relative;
+		z-index: 1;
+		line-height: 0;
+	}
+
+	@include browsers('Chrome') {
+		html {
+			background: #000;
+		}
+	}
+}

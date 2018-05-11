@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <!--#include virtual="../../Views/Shared/_Meta.html" -->
+    @Html.Partial("~/Views/Shared/_Meta.cshtml")
+    <title>3M</title>
+    <!--#include virtual="../../Views/Shared/_GlobalLink.html" -->
+    @Html.Partial("~/Views/Shared/_GlobalLink.cshtml")
+    <!-- self link begin -->
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/css/result.css?css=20180322")" />
+    <!-- self link end -->
+</head>
+<body>
+    <div class="l-body" data-page="result">
+        <!-- ==================== l-header begin ==================== -->
+        <!--#include virtual="../../Views/Shared/_Header.html" -->
+        @Html.Partial("~/Views/Shared/_Header.cshtml")
+        <!-- ==================== l-header end ==================== -->
+        <main class="l-main">
+            <div class="l-content">
+                <div class="main-content b-text-center">
+                    <div class="working-output">
+                        <figure class="img-wrap">
+                            @{
+                                var host = Request.Url.Scheme + "://" + Request.Url.Host;
+                                var imgsrc = host + "/Uploads/" + ViewBag.ImgUrl + ".png";
+                            }
+                            <img class="result-img" src="@imgsrc" alt="">
+                            <figcaption class="b-hide-text"></figcaption>
+                        </figure>
+                    </div>
+                    <div class="btn-wrap b-middle">
+                        <a download href="@imgsrc" class="btn-circle icon-save b-bg-white b-inline b-hide-tm ga_click_trace ga_click_preventDefault" ga_cat="Game" ga_event="click" ga_label="download"><span class="b-hide-text">儲存圖片</span></a>
+                        <a download href="@imgsrc" class="btn-circle icon-save b-bg-white b-inline b-hide-md ga_click_trace" ga_cat="Game" ga_event="click" ga_label="download"><span class="b-hide-text">儲存圖片</span></a>
+                        @{
+                            var webUrl = Request.Url.AbsoluteUri;
+                            var fbUrl = "http://www.facebook.com/sharer/sharer.php?u=" + HttpUtility.UrlEncode(webUrl + "&openExternalBrowser=1");
+                        }
+                        <a href="@fbUrl" class="btn-circle icon-fb b-bg-white jQ-share" ga_cat="Game" ga_event="click" ga_label="FB"><span class="b-hide-text">分享到 Facebook</span></a>
+                        <a href="@Url.Action("Product")" class="btn-link b-inline b-middle b-text-white b-bg-black ga_click_trace" ga_cat="Game" ga_event="click" ga_label="prod"><em class="text">更多賴床秘訣</em></a>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <!-- ==================== l-footer begin ==================== -->
+        <!--#include virtual="../../Views/Shared/_Footer.html" -->
+        @Html.Partial("~/Views/Shared/_Footer.cshtml")
+        <!-- ==================== l-footer end ==================== -->
+    </div>
+    <!-- ==================== not support begin ==================== -->
+    <!--#include virtual="../../Views/Shared/_Not-Support.html" -->
+    @Html.Partial("~/Views/Shared/_Not-Support.cshtml")
+    <!-- ==================== not support end ==================== -->
+    <!--#include virtual="../../Views/Shared/_GlobalScriptsGA.html" -->
+    @Html.Partial("~/Views/Shared/_GlobalScriptsGA.cshtml")
+    <!--[if gt IE 9]><!-->
+    <!-- common script ft begin -->
+    <!--#include virtual="../../Views/Shared/_GlobalScriptsLibs.html" -->
+    @Html.Partial("~/Views/Shared/_GlobalScriptsLibs.cshtml")
+    <!--#include virtual="../../Views/Shared/_GlobalScriptsFt.html" -->
+    @Html.Partial("~/Views/Shared/_GlobalScriptsFt.cshtml")
+    <!-- common script ft end -->
+    <!-- self script begin -->
+    <!-- self script end -->
+    <!--<![endif]-->
+</body>
+</html>

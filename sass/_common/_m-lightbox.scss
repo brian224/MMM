@@ -1,0 +1,155 @@
+.m-lightbox {
+	background: $color-white;
+	position: relative;
+	box-shadow: 0 3px 5px rgba($color-black, 0.1);
+
+	.m-lightbox-bd {
+		box-sizing: border-box;
+	}
+
+	.btn-close {
+		background: $color-white;
+		width: 40px;
+		height: 40px;
+		position: absolute;
+		border-radius: 50%;
+		@include transition(ease-in all 0.3s);
+
+		&:before, &:after {
+			content: '';
+			margin: -10px 0 0 -1px;
+			background: $color-black;
+			display: block;
+			width: 2px;
+			height: 20px;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			border-radius: 2px;
+		}
+
+		&:before {
+			@include transform(rotate(45deg));
+		}
+
+		&:after {
+			@include transform(rotate(-45deg));
+		}
+	}
+
+	.btn-arrow {
+		margin-top: -20px;
+		display: none;
+		width: 40px;
+		height: 40px;
+		position: absolute;
+		top: 50%;
+		@include transition(ease-in all 0.3s);
+
+		&.btn-prev:before {
+			margin-left: -6px;
+			@include transform(rotate(-45deg));
+		}
+
+		&.btn-next:before {
+			margin-left: -14px;
+			@include transform(rotate(135deg));
+		}
+
+		&.is-show {
+			display: block;
+		}
+
+		&:before {
+			content: '';
+			margin-top: -8px;
+			display: block;
+			width: 16px;
+			height: 16px;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			border-top: 2px solid $color-black;
+			border-left: 2px solid $color-black;
+		}
+	}
+}
+
+@include respond(Desktops) {
+	.m-lightbox {
+		.btn-close:hover {
+			background: $color-gray-l-p40;
+		}
+
+		.btn-arrow:hover {
+			background: $color-gray-l-p40;
+		}
+	}
+}
+
+@include respond(Desktops-Tablets) {
+	.m-lightbox {
+		.btn-close {
+			top: 25px;
+			right: 25px;
+		}
+
+		.btn-arrow {
+			&.btn-prev {
+				left: 25px;
+			}
+
+			&.btn-next {
+				right: 25px;
+			}
+		}
+
+		.m-lightbox-bd {
+			padding: 100px;
+			width: 600px;
+			max-height: 80vh;
+			overflow-x: hidden;
+			overflow-y: auto;
+
+			img {
+				max-width: 400px;
+			}
+		}
+	}
+}
+
+@include respond(HD) {}
+
+@include respond(Tablets) {}
+
+@include respond(Tablets-Mobiles) {}
+
+@include respond(Mobiles) {
+	.m-lightbox {
+		.btn-close {
+			top: 0;
+			right: 0;
+		}
+
+		.btn-arrow {
+			&.btn-prev {
+				left: 0;
+			}
+
+			&.btn-next {
+				right: 0;
+			}
+		}
+
+		.m-lightbox-bd {
+			padding: 50px 40px;
+			width: calc(100vw - 60px);
+
+			img {
+				max-width: 100%;
+			}
+		}
+	}
+}
+
+@include respond(Iphone5) {}

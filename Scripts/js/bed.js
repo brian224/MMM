@@ -503,7 +503,7 @@ projects.$d.ready(function(){
     }
 
     $('.jQ-hint').on('click', function(){
-        localStorage.setItem('alreadyKnown', 'true');
         $(common._lBody).removeClass('show-lightbox');
+        localStorage.setItem('alreadyKnown', 'true');
     });
 });

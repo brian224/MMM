@@ -5,29 +5,52 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="format-detection" content="telephone=no" />
 <meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE" />
+<meta name="theme-color" content="#dce6e8" />
 @{
-    var host = "http://" + Request.Url.Host;
-    var imgUrl = ViewBag.ImgUrl;
-    if (imgUrl == null)
+    var host = Request.Url.Scheme + "://" + Request.Url.Host;
+    var imgurl = ViewBag.ImgUrl;
+    if (imgurl == null)
     {
-        imgUrl = "http://nieh.3mbedding.com.tw/Content/img/shared/fb.png";
+        imgurl = "http://nieh.3mbedding.com.tw/Content/img/shared/fb.png";
     }
     else
     {
-        imgUrl = host + "/Uploads/" + imgUrl + ".png";
+        imgurl = host + "/Uploads/" + imgurl + ".png";
     }
 
-    var title = ViewBag.Title;
-    if (title == null)
+    string[] reasons = { "他們說，人一生專心做好一件事就是圓滿，我的那件事剛好是睡覺。",
+                         "不好意思今天大塞車，所以我還在家裡睡覺。",
+                         "起床看到貓咪還在睡，所以我決定今天當隻貓。喵。",
+                         "世上沒有一件事可以不努力。事實上，我也很努力的在賴床。",
+                         "真正重要的東西，只用眼睛是看不到的。例如睡眠。",
+                         "我剛剛夢到我已經醒來了。所以我就安心地繼續睡了。",
+                         "當你真心渴望某件事時，全宇宙都會聯合起來幫助你。像是賴床。",
+                         "老闆說我今天可以在家睡覺。然後老闆本人是我。",
+                         "你看過賴床的人嗎？現在就讓你看個夠。" };
+
+    string title;
+    if (ViewBag.TitleIndex == null)
     {
         title = "讓3M和聶永真陪你賴床！馬上製作你的賴床理由";
+    }
+    else
+    {
+        title = reasons[Convert.ToInt32(ViewBag.TitleIndex)];
+        //title = ViewBag.Title;
     }
 }
 <meta property="og:title" content="給我一個賴床理由" />
 <meta property="og:description" name="description" content="@title" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="http://nieh.3mbedding.com.tw" />
-<meta property="og:image" content="@imgUrl" />
+@if (ViewBag.ImgUrl == null)
+{
+    <meta property="og:url" content="@(Request.Url.Scheme)://@(Request.Url.Host)" />
+}
+else
+{
+    <meta property="og:url" content="@Request.Url.AbsoluteUri" />
+}
+<meta property="og:image" content="@imgurl" />
 <meta property="og:image:type" content="image/jpeg" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
